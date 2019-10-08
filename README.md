@@ -8,10 +8,11 @@ ______                 _        _____
                 |_|                                      
                 
 ## Disclamer
-This repository is mean for reseaarch and education purposes only. Use at your own risk. 
+
+This repository is meant for research and educational purposes only. Use at your own risk. 
 
 
-### GNU General Public License (GNU GPL)
+## GNU General Public License (GNU GPL)
 
 This repository is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
