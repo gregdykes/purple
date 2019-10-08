@@ -7,7 +7,8 @@ ______                 _        _____
                 | |                                      
                 |_|                                      
                 
-                
+## Disclamer
+This repository is mean for reseaarch and education purposes only. Use at your own risk. 
 
 
 ### GNU General Public License (GNU GPL)
