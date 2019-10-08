@@ -1,19 +1,11 @@
-______                 _        _____                    
-| ___ \               | |      |_   _|                   
-| |_/ /   _ _ __ _ __ | | ___    | | ___  __ _ _ __ ___  
-|  __/ | | | '__| '_ \| |/ _ \   | |/ _ \/ _` | '_ ` _ \ 
-| |  | |_| | |  | |_) | |  __/   | |  __/ (_| | | | | | |
-\_|   \__,_|_|  | .__/|_|\___|   \_/\___|\__,_|_| |_| |_|
-                | |                                      
-                |_|                                      
-                
-## Disclamer
+# Purple Team Files
 
-This repository is meant for research and educational purposes only. Use at your own risk. 
+### Disclamer
+This repository is meant for research and educational purposes only. 
+Use at your own risk. You may not use this respository or the information 
+within it for any illegal or unethical purpose.
 
-
-## GNU General Public License (GNU GPL)
-
+### GNU General Public License (GNU GPL)
 This repository is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or 

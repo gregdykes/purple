@@ -1,0 +1,72 @@
+# Kioptrix Level 2
+
+### Enumerate the host and services
+
+netdiscover -i eth1 -r 192.168.56.1/24
+nmap -sP 192.168.56.1/24
+
+nmap -p- -A <kioprix ip>
+
+nikto -h http://<kioprix ip>
+
+dirb http://<kioprix ip>
+
+## Web & Sql Injection Attack
+
+### Burp Suite Setup
+Set up localhost proxy in Firefox
+
+Preferences > Proxy > Manual Proxy
+- 127.0.0.1 and port 8080
+- check "Use this proxy server for all protocols"-
+- Remove all text in "No Proxy" area.
+
+Close Firefox
+
+Change the version of java Burp Suite will use:
+- update-alternatives --config java
+- Choose 2
+
+Start Burp Suite
+
+Start Firefox and goto http://burp > CA Cert (Download)
+- Preferences > Certs > import > select downloaded file > Open
+- Check both Trust boxes and click Ok
+
+Turn Off Intercept in Burp under Proxy Tab
+
+## Start Attacking using Burp Suite
+
+Open http://<kioprix ip> in a browser
+
+Turn on Intercept in Burp under Proxy
+
+Note: If you get an error about "Unknown host: detectportal.firefox.com" you need to open about:config, search for captive-portal and double click "network.captive-portal-service.enabled" setting the value to false.
+
+Turn Intercept on and enter test and test in the login box
+in the raw proxy tab, send to intruder.
+Goto Intruder tab > Positions
+- Attack Type Sniper
+- Clear presets
+- Add uname and pw
+
+Payloads Tab
+-Under Payloads, copy and paste the contents of the sql-injection-payloads.txt 
+
+Click "Start Attack"
+
+Sort by length of the output
+779 length gives a different response than 860
+
+Select a request, right click > Request IN browser > In Original Session > Copy
+
+Kill the intruder attack
+
+Turn off intercept on proxy tab.
+
+Cut and Paste url from burp into Firefox
+
+
+
+
+
