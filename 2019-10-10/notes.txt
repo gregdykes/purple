@@ -50,7 +50,8 @@ In order to get a fully functional shell, try one of these...
 /bin/bash -i
 python -c 'import pty; pty.spawn("/bin/sh")'
 
-
+## Simple Webserver
+python -m SimpleHTTPServer 8000
 
 
 
