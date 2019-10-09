@@ -1,6 +1,6 @@
 # Purple Team Files
 
-### Disclamer
+### Disclaimer
 This repository is meant for research and educational purposes only. 
 Use at your own risk. You may not use this respository or the information 
 within it for any illegal or unethical purpose.
