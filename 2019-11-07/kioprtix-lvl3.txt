@@ -19,7 +19,7 @@ msf5 exploit(multi/http/lcms_php_exec) > exploit
 
 *** search for the word password
 
-find / -maxdepth 5 -name * -type -f -exec grep -Hn password {} \; 2>/dev/null
+find / -maxdepth 5 -name *.php -type -f -exec grep -Hn password {} \; 2>/dev/null
 
 http://crackstation.net
 
@@ -45,4 +45,5 @@ find / -perm /4000 -exec ls -l {} \; 2>/dev/null
 
 find / -perm /2000 -exec ls -l {} \; 2>/dev/null
 
-
+or use...
+https://github.com/rebootuser/LinEnum
