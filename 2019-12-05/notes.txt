@@ -1,6 +1,27 @@
-Passwords
+Brute Forse/Password Cracking Attacks
 
 Useful Tools
 
+- hydra -l root -P rockyou.txt -t 4 -o login.pwd 192.168.56.110 ssh
+
+- hashcat
+
+- hash-identifier <hashed string>
+
+
 Word Lists
+
+- Some are located on kali in /use/share/wordlists
+
+- https://github.com/danielmiessler/SecLists - Lots of Great word lists here
+
+Generating Wordlists
+
+- crunch - will create wordlists. Example: crunch 4 8 0123456789 will great a list of passwords between 4 adn 8 characters using characters 0-9
+
+- cewl <url> - scrapes a url to create a wordlist
+
+- cupp - osint tool for creating a wordlist - https://github.com/Mebus/cupp.git
+
+- Mentalist - another tool - https://github.com/sc0tfree/mentalist
 
